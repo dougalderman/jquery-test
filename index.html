@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery test</title>
+</head>
+<body>
+  <h1>Hello, H1!</h1>
+  <h1 class="demo">Hello, Class H1</h1>
+  <h1 id="h1-id">Hello, ID H1</h1>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will execute when the page is ready
+      // alert('Hello, world!');
+
+      // update the text
+      $('h1').text('What\'s up?, jQuery');
+      $('h1.demo').text('Hello, jQuery');
+      $('#h1-id').text('Goodbye, jQuery');
+
+    })
+  </script>
+</body>
+</html>
