@@ -8,6 +8,16 @@
   <h1>Hello, H1!</h1>
   <h1 class="demo">Hello, Class H1</h1>
   <h1 id="h1-id">Hello, ID H1</h1>
+  <h1 custom="banner">Custom Attribute</h1>
+  <h1 class="col-md-4">Col-MD-4</h1>
+  <h1 class="col-sd-2">Col-MD-2</h1>
+
+  <header style="color: blue;">
+    <h1>Inside header</h1>
+    <div>
+      <h2>Inside div, inside header</h2>
+    </div>
+  </header>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script>
@@ -16,10 +26,24 @@
       // alert('Hello, world!');
 
       // update the text
-      $('h1').text('What\'s up?, jQuery');
+      // $('h1').text('What\'s up?, jQuery');
       $('h1.demo').text('Hello, jQuery');
       $('#h1-id').text('Goodbye, jQuery');
 
+      // find elements based on attribute equality
+      $('[custom="banner"]').text('Found by equality');
+
+      // find elements based on attribute starts with
+      $('[class^="col"]').text('Found by starts with');
+
+      // find elements based on attribute contains
+      $('[class*="sd"]').text('Found by contains');
+
+      // parent / child
+      $('header > h1').text('Parent child');
+
+      // descendent
+      $('header h2').text('Descendent');
     })
   </script>
 </body>
