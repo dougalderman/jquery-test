@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 32px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .parent {
+        margin-left: .8em
+    }
+    .child {
+        margin-left: 1.6em;
+    }
+  </style>
+</head>
+<body>
+  <div style="color:black">
+    Grandparent
+    <div style="color:black" class="parent">
+       -Parent
+      <div style="color:black" class="child">First child</div>
+      <div style="color:black" class="child">Second child</div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  </script>
+</body>
+</html>
