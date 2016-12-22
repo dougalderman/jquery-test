@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 32px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .parent {
+        margin-left: .8em
+    }
+    .child {
+        margin-left: 1.6em;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div style="color:black">First</div>
+    <div style="color:black">Second</div>
+    <div style="color:black">Third</div>
+    <div id="target" style="color:black">Fourth</div>
+    <div style="color:black">Fifth</div>
+    <div style="color:black">Sixth</div>
+    <div class="stop2" style="color:black">Seventh</div>
+  </div>
+  <br />
+  <div id = "display"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will execute when the page is ready
+      var element = $('#target');
+      var container = $('#container');
+      var index = container.children().index(element);
+
+      $('#display').text('Index is ' + index);
+
+      // get returns a DOM element, not a jQuery object
+      var foundElement = container.children().get(index);
+      // convert to jQuery object
+      var jQueryObject = $(foundElement);
+
+      jQueryObject.attr('style', 'color:red');
+
+    })
+  </script>
+</body>
+</html>

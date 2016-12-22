@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 32px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .parent {
+        margin-left: .8em
+    }
+    .child {
+        margin-left: 1.6em;
+    }
+  </style>
+</head>
+<body>
+  <div id="target" style="color:black">
+    Grandparent
+    <div style="color:black" class="parent">
+       -Parent
+      <div style="color:black" class="child">First child</div>
+      <div id="demo" style="color:black" class="child">Second child</div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+
+      // $('#target').attr('style', 'color:red');
+
+      // will locate all direct children of #target (i.e. parent)
+      // $('#target').children().attr('style', 'color:blue');
+
+      // will locate all descendents of #target (i.e. parent and children)
+      // needs a selector ('*' for all)
+      // $('#target').find('*').attr('style', 'font-style:italic');
+
+      // will locate parent of #demo (i.e. parent)
+      // $('#demo').parent().attr('style', 'color:red');
+
+      // will locate all ancestors of #demo (i.e. parent and grandparent)
+      $('#demo').parents().attr('style', 'color:red');
+
+    })
+  </script>
+</body>
+</html>

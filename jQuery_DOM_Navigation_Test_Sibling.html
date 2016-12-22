@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 32px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .parent {
+        margin-left: .8em
+    }
+    .child {
+        margin-left: 1.6em;
+    }
+  </style>
+</head>
+<body>
+  <div class="stop" style="color:black">First</div>
+  <div style="color:black">Second</div>
+  <div style="color:black">Third</div>
+  <div id="target" style="color:black">Fourth</div>
+  <div style="color:black">Fifth</div>
+  <div style="color:black">Sixth</div>
+  <div class="stop2" style="color:black">Seventh</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will execute when the page is ready
+
+      // update previous element
+      // $('#target').prev().attr('style', 'color:red');
+
+      // update all previous elements
+      // $('#target').prevAll().attr('style', 'color:red');
+
+      // update previous until (but not including) stop
+      // $('#target').prevUntil('.stop').attr('style', 'color:red');
+
+      // update next element
+      // $('#target').next().attr('style', 'color:red');
+
+      // update all next elements
+      // $('#target').nextAll().attr('style', 'color:red');
+
+      // update next until (but not including) stop2
+      $('#target').nextUntil('.stop2').attr('style', 'color:red');
+    })
+  </script>
+</body>
+</html>
