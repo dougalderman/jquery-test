@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 32px;
+    }
+    div {
+        margin-top: .1em;
+    }
+  </style>
+</head>
+<body>
+  <div id="target">Demo Element</div>
+  <div id="display"></div>
+  <div id="target2">Another Demo Element</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will execute when the page is ready
+
+      // $('#target').click(function() {
+      //   // this is the click event handler for the div element
+      //   $('#display').text('Div was clicked');
+      // });
+
+      $('div').click(function() {
+        // 'this' is the DOM element of the item that raised the event
+        // convert to jQuery object
+        $(this).text('Clicked!');
+      });
+    })
+  </script>
+</body>
+</html>
