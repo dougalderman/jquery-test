@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 32px;
+    }
+    div {
+        margin-top: .1em;
+    }
+ </style>
+</head>
+<body>
+  <div id="target">Demo Element</div>
+
+  <div id="display"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+      $('#target').click(function(event) {
+        output = 'User clicked on ' + event.pageX + '/' + event.pageY;
+        $('#display').text(output);
+      })
+    });
+
+  </script>
+</body>
+</html>
