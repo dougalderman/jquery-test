@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 24px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .btn {
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <div><button type="button" class="btn" id="creator">Create New Button</button></div>
+    <div><button type="button" class="btn updater">Existing Button</button></div>
+    <div id="target"></div>
+  </form>
+
+  <div id="display"></div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+
+      $('#creator').click(function() {
+        $('#target').html('<button type="button" class="btn updater">New Button</button>');
+      });
+
+      // $('button.updater').click(function() {
+      //   $('#display').text($(this).text() + ' was clicked!');
+      // });
+
+      // will add the event handler to all future objects as well
+      // inside the form, with a type of button and class of updater
+      // for click event
+      $('form').delegate('button.updater', 'click', function() {
+        $('#display').text($(this).text() + ' was clicked!');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 24px;
+    }
+    div {
+        margin-top: .1em;
+    }
+  </style>
+</head>
+<body>
+  <div>
+	  <span id="target">Basic data</span>
+	  <span id="target-help"></span>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+
+      // $('#target').mouseenter(function() {
+	    //   $('#target-help').text('More data');
+      // }).mouseleave(function() {
+	    //   $('#target-help').text('');
+      // });
+
+      $('#target').mouseenter(function() {
+	      $('#target-help').text('More data');
+      }).mouseleave(function() {
+	      $('#target-help').text('');
+      });
+    });
+  </script>
+</body>
+</html>

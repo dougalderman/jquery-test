@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 24px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .help {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" />
+      <span class="help" hidden="hidden">Please enter a name</span>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="text" class="form-control" id="email" />
+      <span class="help" hidden="hidden">Please enter an email</span>
+    </div>
+  </form>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+      $('input[type="text"]').focus(function() {
+        // convert this to a jQuery object
+        // find the next span
+        // remove the hidden attribute
+        $(this).next('span.help').removeAttr('hidden');
+      }).blur(function() {
+        // find every help span element and hide them
+        $('span.help').attr('hidden', 'hidden');
+      })
+    });
+  </script>
+</body>
+</html>

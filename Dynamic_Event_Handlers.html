@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 24px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .btn {
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <div><button type="button" class="btn validate">First button</button></div>
+    <div><button type="button" class="btn validate">Second button</button></div>
+    <div><button type="button" class="btn">Third button</button></div>
+  </form>
+
+  <div id="display"></div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+
+      $('form').on('click', 'button.validate', function() {
+        $('#display').text('Clicked!!');
+      });
+    });
+  </script>
+</body>
+</html>
