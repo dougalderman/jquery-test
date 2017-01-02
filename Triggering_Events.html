@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 24px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .btn {
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <div><button type="button" class="btn updater">First</button></div>
+  <div><button type="button" class="btn updater">Second</button></div>
+  <div><button type="button" class="btn" id="target">Execute Event Handlers</button></div>
+
+  <div id="display"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+
+      $('button.updater').click(function() {
+        var existingText = $('#display').text();
+        var buttonText = $(this).text();
+        $('#display').text(existingText + ' - ' + buttonText);
+      });
+
+      $('#target').click(function() {
+        // perform a click on the button
+        // $('button.updater').click();
+
+        // just execute the event handler code by using trigger
+        // $('button.updater').trigger('click');
+
+        // just execute the first one
+        $('button.updater').triggerHandler('click');
+
+      });
+    });
+  </script>
+</body>
+</html>
