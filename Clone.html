@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 24px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .btn {
+      font-size: 1em;
+    }
+    .red {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h2>clone</h2>
+
+  <div><button type="button" class="btn" id="executor">Execute!!</button></div>
+
+  <div id="dialog">First line</div>
+
+  <div id="container">
+  </div>
+  <br /><br />
+
+  <button type="button" id="add-line">Add new line</button>
+  <div id="container2">
+    <div class="user-entry">
+      <label>Email:</label>
+      <input type="email" />
+      <label>Password:</label>
+      <input type="password" />
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+
+        // find the dialog element, clone it, and put it into a variable
+        var $dialog = $('#dialog').clone();
+        $dialog.removeAttr('id');
+
+        $('#executor').click(function() {
+          // $('#container').append($('#dialog').clone());
+
+          // each time we need a new instance, we need to clone it again.
+          $('#container').append($dialog.clone());
+
+        });
+
+        $userForm = $('.user-entry').clone();
+        $userForm.css('display', 'none');
+        $('#add-line').click(function() {
+          var $newUserForm = $userForm.clone();
+          $('#container2').append($newUserForm);
+          $newUserForm.show(1000);
+        });
+
+    });
+  </script>
+</body>
+</html>
