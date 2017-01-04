@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 24px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .btn {
+      font-size: 1em;
+    }
+    .red {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div><button type="button" class="btn" id="target">Execute!!</button></div>
+
+  <div id="display" class="red">
+    <div>This content was already here</div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+      $('#target').click(function() {
+        // makes modifications on the outside
+
+        // before
+        $('#display').before('<div>This is at the beginning</div>');
+
+        // after
+        $('#display').after('<div>This is at the end</div>');
+      });
+
+    });
+  </script>
+</body>
+</html>

@@ -7,5 +7,5 @@
     "windows": {
         "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
     },
-    "args": ["Triggering_Events.html"]
+    "args": ["Sliding.html"]
 }

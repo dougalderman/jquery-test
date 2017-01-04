@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 24px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .btn {
+      font-size: 1em;
+    }
+    .red {
+      color: red;
+    }
+    #box {
+      height: 5em;
+      width: 5em;
+      background-color: darkblue;
+      color: white;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>hide, show, and toggle</h2>
+
+  <div><button type="button" class="btn" id="executor">Execute!!</button></div>
+
+  <div id="box">Demo content</div>
+
+  <br /><br />
+
+  <form>
+    <div>
+      <label>Name:</label>
+      <input type="text" />
+    </div>
+    <button type="button" id="show-additional-information">
+        Show additional information
+    </button>
+    <div id="additional-information" class="hidden">
+      <label>Additional information:</label>
+      <input type="text" />
+    </div>
+  </form>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+
+      $('#executor').click(function() {
+        // hide
+        // $('#box').hide(1000);
+
+        // toggle
+        $('#box').toggle(1000);
+      });
+
+      $('#show-additional-information').click(function() {
+        var text = $('#show-additional-information').text();
+        text = _.trim(text);
+        console.log(text);
+        $('#show-additional-information').text(
+        text == 'Show additional information' ? 'Hide additional information' : 'Show additional information');
+        $('#additional-information').toggle(750);
+    });
+
+    });
+  </script>
+</body>
+</html>

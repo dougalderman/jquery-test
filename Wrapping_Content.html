@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 24px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .btn {
+      font-size: 1em;
+    }
+    .red {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h3>wrapping</h3>
+  <div><button type="button" class="btn" id="target">Execute!!</button></div>
+
+  <div class="wrap-me">First line</div>
+  <div class="wrap-me">Second line</div>
+
+  <div id="t1">
+	  <div class="demo">Item one</div>
+	  <div class="demo">Item two</div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+      $('#target').click(function() {
+        // $('.wrap-me').wrap('<div class="red"></div>');
+
+        // $('.wrap-me').wrapAll('<div class="red"></div>');
+
+        $('.wrap-me').wrapInner('<div class="red"></div>');
+      });
+
+      $('.demo').wrapInner('<section></section>');
+
+
+    });
+  </script>
+</body>
+</html>

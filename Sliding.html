@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 24px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .btn {
+      font-size: 1em;
+    }
+    .red {
+      color: red;
+    }
+    #box {
+      height: 5em;
+      width: 5em;
+      background-color: darkblue;
+      color: white;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>sliding</h2>
+
+  <div><button type="button" class="btn" id="executor">Execute!!</button></div>
+
+  <div id="box">Demo content</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+
+      $('#executor').click(function() {
+        $('#box').slideToggle(1000);
+      });
+
+    });
+  </script>
+</body>
+</html>
