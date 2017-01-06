@@ -1,0 +1,110 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style>
+
+    body {
+      font-family: Verdana;
+    }
+    h1, h2, h3 {
+      color: darkblue;
+    }
+    .rating-circle {
+      height: 2em;
+      width: 2em;
+      border: .1em solid black;
+      border-radius: 1.1em;
+      display: inline-block;
+      margin: 0;
+      padding: .1em;
+    }
+
+    .rating-hover {
+      background-color: yellow;
+    }
+
+    .rating-chosen {
+      background-color: green;
+    }
+
+    #rating-container {
+      margin-bottom: 10px;
+    }
+
+ </style>
+</head>
+<body>
+
+  <h1>Contoso Web Developer Conference</h1>
+  <h2>Finding elements using jQuery</h2>
+  <div>This session is about identifying elements using jQuery methods and selectors.</div>
+  <h3>Rate this session</h3>
+  <div id="rating-container" max-value="5"></div>
+
+  <div>
+    <label for="max-value">Enter max value:</label>
+    <input type="text" id="max-value" />
+    <button type="button" id="update-max-value">Update max value</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+  <script>
+    // your answer would go here
+    $(function() {
+    // will execute when the page is ready
+
+      var indx = -1;
+
+      // Handle hover. Add class rating-hover to circle hovered over and all circles to left
+      $('#rating-container').on('mouseenter', '.rating-circle', function() {
+        $('#rating-container').children().removeClass('rating-chosen'); // Remove green if user has clicked
+        $(this).addClass('rating-hover');  // Make circle yellow
+        $(this).prevAll().addClass('rating-hover'); // Make all circles to left of hovered circle yellow
+      });
+
+      $('#rating-container').on('mouseout', '.rating-circle', function() {
+        // Remove class rating-hover when user mouseouts
+        $(this).removeClass('rating-hover');  // Make circle yellow
+        $(this).prevAll().removeClass('rating-hover'); // Make all circles to left of hovered circle yellow
+        // Add back in class rating-chosen when user mouseouts if already clicked
+        // get returns a DOM element, not a jQuery object
+        for (var i = 0; i <= indx; i++) {
+          var foundElement = $('#rating-container').children().get(i);
+          // convert to jQuery object
+          var jQueryObject = $(foundElement);
+          jQueryObject.addClass('rating-chosen');
+        }
+      });
+
+      // Handle click. Add class rating-chosen to circle clicked on and all circles to left
+      $('#rating-container').on('click', '.rating-circle', function() {
+        indx = $('#rating-container').children().index(this);
+        $(this).addClass('rating-chosen');  // Make circle green
+        $(this).prevAll().addClass('rating-chosen'); // Make all circles to left of hovered circle green
+        $(this).nextAll().removeClass('rating-chosen'); // Make all circles to right of hovered circle blank
+                                                        // (in case user clicks after having already clicked)
+      });
+
+      var $maxValue = $('#rating-container').attr('max-value');
+      var $appendStr = '<div class="rating-circle"></div>';
+
+      createRatingCircles($maxValue, $appendStr);
+
+      $('#update-max-value').on('click', function() {
+        $maxValue = $('#max-value').val();
+        $('#rating-container').empty();
+        createRatingCircles($maxValue, $appendStr);
+      });
+
+      function createRatingCircles(maxVal, appStr) {
+        for (var i = 0; i < maxVal; i++) {
+          $('#rating-container').append(appStr);
+        }
+      }
+
+    });
+
+  </script>
+</body>
+</html>
