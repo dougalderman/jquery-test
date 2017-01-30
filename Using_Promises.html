@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 24px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .btn {
+      font-size: 1em;
+    }
+    .red {
+      color: red;
+    }
+    #box {
+      height: 5em;
+      width: 5em;
+      background-color: darkblue;
+      color: white;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="output">Click button to run script</div>
+  <div>
+    <button class="btn" id="executor">Run script</button>
+  </div>
+  <div id="box">Sample content</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+
+      $('#executor').click(function() {
+        // Hide runs asynchronously
+        // The next line of code runs immediately
+        // $('#box').hide(1000);
+        // $('#output').text('Box is now hidden');
+
+        // Use promises
+        $('#box').hide(1000).promise().done(function() {
+          // This code will run after the hide is complete
+          $('#output').text('Box is now hidden');
+        });
+
+
+
+      });
+
+    });
+  </script>
+</body>
+</html>
