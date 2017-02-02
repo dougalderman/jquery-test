@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 24px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .btn {
+      font-size: .5em;
+    }
+    .red {
+      color: red;
+    }
+    #box {
+      height: 5em;
+      width: 5em;
+      background-color: darkblue;
+      color: white;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <input type="text" id="message" class="form-control" />
+    <button type="button" class="btn" id="send-message" disabled>Send Message</button>
+    <ul id="messages">
+
+    </ul>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+
+      // Load the worker
+      var worker = new Worker('./scripts/Worker.js');
+
+      // Register the message event handler
+      worker.addEventListener('message', function(e) {
+        // simple messaging - if the worker is ready it'll send a message
+        if (e.data === 'READY') {
+          // print the worker is ready
+          $('#messages').append('<li>Worker ready</li>');
+
+          // enable the button and add a click event handler
+          $('#send-message').removeAttr('disabled').click(function() {
+            // send the contents of the textbox to the worker
+            var message = $('#message').val();
+            worker.postMessage(message);
+          });
+
+          // place the focus on the textbox
+          $('#message').focus();
+        } else {
+          // if the message wasn't READY, it's just a normal message
+
+          // Add the message to the output
+          $('#messages').append('<li>' + e.data + '</li>');
+
+          // Clear the textbox and reset focus
+          $('#message').val('').focus();
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>
