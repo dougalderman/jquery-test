@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM Navigation Test</title>
+  <style>
+    body {
+        font-size: 24px;
+    }
+    div {
+        margin-top: .1em;
+    }
+    .btn {
+      font-size: .5em;
+    }
+    .red {
+      color: red;
+    }
+    #box {
+      height: 5em;
+      width: 5em;
+      background-color: darkblue;
+      color: white;
+    }
+    .hidden {
+      display: none;
+    }
+    .form-control {
+      width: 60px;
+      height: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+     <label for="first-name">First name:</label>
+     <input type="text" id="first-name" class="form-control" />
+  </div>
+  <div>
+     <label for="last-name">Last name:</label>
+     <input type="text" id="last-name" class="form-control" />
+  </div>
+  <div>
+    <button type="button" class="btn" id="execute">Load data</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+  <script>
+    $(function() {
+      // will excute when the page is ready
+      $('#execute').click(function() {
+     //   var url = '/api/Demo/' // no parameters returns a person object
+        // firstName and lastName properties.
+        var url = 'data/Person.json';
+        $.getJSON(url, function(person) {
+          $('#first-name').val(person.firstName);
+          $('#last-name').val(person.lastName);
+        })
+      });
+
+    });
+
+  </script>
+</body>
+</html>
