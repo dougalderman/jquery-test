@@ -7,5 +7,5 @@
     "windows": {
         "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
     },
-    "args": ["Get_JSON.html"]
+    "args": ["Ajax_Post.html"]
 }
